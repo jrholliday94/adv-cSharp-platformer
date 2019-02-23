@@ -24,10 +24,11 @@ public class PlayerController : Physics
 
         move.x = Input.GetAxis("Horizontal");
 
+
         if (Input.GetButtonDown("Jump") && grounded)
         {
-            
             velocity.y = jumpTakeOffSpeed;
+
         }
         else if (Input.GetButtonUp("Jump"))
         {
@@ -39,10 +40,10 @@ public class PlayerController : Physics
 
         bool flipSprite = false;
 
-        if (spriteRenderer.flipX == false && Input.GetKeyDown(KeyCode.LeftArrow))
+        if (spriteRenderer.flipX == false && (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)))
         {
             flipSprite = true;
-        }else if(spriteRenderer.flipX == true && Input.GetKeyDown(KeyCode.RightArrow))
+        }else if(spriteRenderer.flipX == true && (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)))
         {
             flipSprite = true;
         }
@@ -52,10 +53,8 @@ public class PlayerController : Physics
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
-    
-    
-        animator.SetBool("grounded", grounded);
-        animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+
+        animator.SetFloat("Speed", Mathf.Abs(velocity.x) / maxSpeed);
 
         targetVelocity = move * maxSpeed;
     }
