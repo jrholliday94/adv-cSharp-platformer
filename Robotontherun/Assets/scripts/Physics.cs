@@ -1,12 +1,10 @@
-﻿using System.Collections;
+﻿// Taken from Unity 2d tutorial: https://unity3d.com/learn/tutorials/topics/2d-game-creation/horizontal-movement?playlist=17093
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Taken from Unity 2d tutorial: https://unity3d.com/learn/tutorials/topics/2d-game-creation/horizontal-movement?playlist=17093
-
 public class Physics : MonoBehaviour
 {
-
     public float minGroundNormalY = .65f;
     public float gravityModifier = 1f;
 
@@ -107,5 +105,4 @@ public class Physics : MonoBehaviour
 
         rb2d.position = rb2d.position + move.normalized * distance;
     }
-
 }
